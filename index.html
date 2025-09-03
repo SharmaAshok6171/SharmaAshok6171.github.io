@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Library</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css"
+  rel="stylesheet"
+/>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    header {
+      background: url('images/library-banner.jpg') no-repeat center center/cover;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      animation: fadeDown 1.5s ease;
+    }
+
+    header p {
+      animation: fadeUp 2s ease;
+    }
+
+    /* section { padding: 80px 0; } */
+
+    /* Gradient Buttons */
+    .btn-primary {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px rgba(37, 117, 252, 0.5);
+    }
+
+    /* Cards */
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 15px;
+    }
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Navbar button gradient */
+    .navbar .btn-secondary {
+      background: linear-gradient(45deg, #7579ff, #b224ef);
+      border: none;
+      color: white;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .navbar .btn-secondary:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px rgba(178, 36, 239, 0.5);
+    }
+
+    /* Animations */
+    @keyframes fadeDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+    /* Reveal Effect */
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Dark Mode */
+    body.dark-mode { background-color: #121212; color: #e0e0e0; }
+    body.dark-mode header { color: white; }
+    body.dark-mode .bg-light { background-color: #1e1e1e !important; }
+    body.dark-mode .card { background-color: #2a2a2a; color: #e0e0e0; }
+    body.dark-mode .facility-card { background-color: #2a2a2a; color: #e0e0e0; }
+    body.dark-mode .navbar-dark { background-color: #1c1c1c !important; }
+    body.dark-mode footer { background-color: #1c1c1c !important; color: #e0e0e0; }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover;
+      color: white;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .facility-card {
+      border-radius: 15px;
+      transition: 0.3s;
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 15px;
+    }
+    .facility-card:hover {
+      transform: translateY(-5px);
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">📚 Gurukul Library</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#facilities">Facilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-5">
+            <button id="darkModeToggle" class="btn btn-secondary btn-sm">🌙 Dark Mode</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  
+
+   <section class="hero" id="home">
+    <header id="home">
+    <h1>Welcome to Gurukul Library</h1>
+    <p>A world of knowledge at your fingertips</p>
+    <a href="#books" class="btn btn-primary btn-lg mt-3">Explore Books</a>
+  </header>
+    <!-- <div>
+      <h1>Welcome to Gurukul Library</h1>
+      <p class="lead">Explore Knowledge | Ancient Wisdom | Modern Learning</p>
+    </div> -->
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="container reveal pt-5">
+    <h2 class="text-center mb-4">🌿 About Gurukul</h2>
+    <p class="text-center">The Gurukul Library is a blend of tradition and modern knowledge.Our library is a peaceful space where knowledge meets imagination.A serene environment, we aim to inspire learning for everyone.</p>
+  </section>
+
+    <!-- Facilities Section -->
+     <section id="facilities" class="container reveal pt-5 pb-5">
+    <h2 class="text-center mb-4">🏛️ Our Facilities</h2>
+    <div class="row mt-5 text-center">
+      <div class="col-md-3 reveal">
+        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
+         <div class="facility-card">
+          <h4>📖 Reading Hall</h4>
+          <p>Peaceful reading environment for students and teachers.</p>
+        </div>
+      </div>
+      <div class="col-md-3 reveal">
+        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
+         <div class="facility-card">
+        <h4>❄️ Air Conditioned</h4>
+        <p>Fully air-conditioned reading halls for a comfortable learning experience.</p>
+      </div>
+      </div>
+      <div class="col-md-3 reveal">
+        <!-- <h5>🖥️ Computer Labs</h5><p>Modern study resources</p></div> -->
+         <div class="facility-card">
+          <h4>💧 Water Purifier</h4>
+          <p>Clean and safe drinking water available for all visitors.</p>
+        </div>
+      </div>  
+      <div class="col-md-3 reveal">
+        <!-- <h5>👥 Events</h5><p>Workshops & discussions</p> -->
+         <div class="facility-card">
+          <h4>🍽️ Lunch Room</h4>
+          <p>Separate room available for students and teachers to have their meals.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5 text-center">
+      <div class="col-md-3 reveal">
+        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
+         <div class="facility-card">
+        <h4>📰 Newspaper</h4>
+        <p>Daily newspapers for general knowledge & updates.</p>
+      </div>
+      </div>
+      <div class="col-md-3 reveal">
+        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
+        <div class="facility-card">
+        <h4>📶 Wi-Fi Suvidha</h4>
+        <p>High-speed internet for research, online study, and digital resources.</p>
+      </div>
+      </div>
+      <div class="col-md-3 reveal">
+        <!-- <h5>🖥️ Computer Labs</h5><p>Modern study resources</p></div> -->
+         <div class="facility-card">
+        <h4>👩‍🎓 Separate Seating</h4>
+        <p>Dedicated, comfortable space for female students.</p>
+      </div>
+      </div>  
+      <div class="col-md-3 reveal">
+        <!-- <h5>👥 Events</h5><p>Workshops & discussions</p> -->
+        <div class="facility-card">
+        <h4>🚲 Bike Parking</h4>
+        <p>Secure and spacious parking area for students and staff bikes.</p>
+      </div>
+      </div>
+    </div>
+    <div class="row mt-5 text-center">
+      <div class="col-md-3 reveal">
+        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
+         <div class="facility-card">
+        <h4>📹 CCTV Surveillance</h4>
+        <p>Fully CCTV fitted campus for safety, monitoring, and discipline.</p>
+      </div>
+      </div>
+      <div class="col-md-3 reveal">
+        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
+        <div class="facility-card">
+        <h4>🚻 Washroom Facility</h4>
+        <p>Separate and clean washrooms for male and female students.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Books Section -->
+  <section id="books" class="bg-light reveal pt-5 pb-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Book Collection</h2>
+      <div class="row mt-5">
+        <div class="col-md-3 mb-4 reveal">
+          <div class="card">
+            <img src="images/book1.jpg" class="card-img-top" alt="Book">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 1</h5>
+              <p class="card-text">Author Name</p>
+              <img src="https://lh3.googleusercontent.com/p/AF1QipOksSGO3hxBSCLYgx-Uf9I0bC1597vqvyqSJvDv=s1360-w100-h100-rw" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 reveal">
+          <div class="card">
+            <img src="images/book2.jpg" class="card-img-top" alt="Book">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 2</h5>
+              <p class="card-text">Author Name</p>
+              <img src="https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w100-h100-rw" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 reveal">
+          <div class="card">
+            <img src="images/book3.jpg" class="card-img-top" alt="Book">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 3</h5>
+              <p class="card-text">Author Name</p>
+              <img src="https://lh3.googleusercontent.com/p/AF1QipN8M6TXAttN0qX6rZA37HJu4dIpLD_pSlsaqezr=s1360-w100-h100-rw" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4 reveal">
+          <div class="card">
+            <img src="images/book4.jpg" class="card-img-top" alt="Book">
+            <div class="card-body">
+              <h5 class="card-title">Book Title 4</h5>
+              <p class="card-text">Author Name</p>
+              <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0dyMUwVkPOHWT_w51zRq5aueRP7MxFk8W8gJftPIQyvhKTkkIL81j51p08wNY0VRg4m_PKGFv9Pvh24LpHy_EOMVsfoghyqQbaxdKt1jVsOfsZiSqt6lMf7D8SGtR4Nam1sjcB9XdKKSm=s1360-w100-h100-rw" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery -->
+   <section id="gallery" class="bg-light reveal pt-5 pb-5">
+    <div class="container">
+      <h2 class="text-center section-title">🖼️ Gallery</h2>
+      <div class="row mt-5">
+  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+    <img
+      src="https://lh3.googleusercontent.com/p/AF1QipOtuJNNu9sXJ0iCWizKiyePVadrFqXDN4YM8_91=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Boat on Calm Water"/>
+
+    <img
+      src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0dyMUwVkPOHWT_w51zRq5aueRP7MxFk8W8gJftPIQyvhKTkkIL81j51p08wNY0VRg4m_PKGFv9Pvh24LpHy_EOMVsfoghyqQbaxdKt1jVsOfsZiSqt6lMf7D8SGtR4Nam1sjcB9XdKKSm=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Wintry Mountain Landscape"/>
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img
+      src="https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Mountains in the Clouds"/>
+
+    <img
+      src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4noKeEWc2OxEMhjLooHnjegZr1oGIg6OP7CZDTrAdf0PVkIcoP9oxw7lpM54-QO49m1gS2DZN80F-vmKSpmTuhCy_bj7KCv6Lk5elL0XxlN8wmpXdjSA9BiwI8nWvxmP9AB-tSezVyp6y8uS=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Boat on Calm Water"/>
+  </div>
+
+  <div class="col-lg-4 mb-4 mb-lg-0">
+    <img
+      src="https://lh3.googleusercontent.com/p/AF1QipPDxcEYoPgOudjro_CSHjoTzPJ9BQsB6NcWGjD4=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Waves at Sea"/>
+
+    <img
+      src="https://lh3.googleusercontent.com/p/AF1QipPzpYdOJ6epI1OWT7cFovtCWEyyIJlf4klKDU1I=s1360-w1360-h1020-rw"
+      class="w-100 shadow-1-strong rounded mb-4"
+      alt="Yosemite National Park"/>
+  </div>
+</div>
+    </div>
+  </section>
+<!-- Gallery -->
+
+  <!-- Contact Section -->
+  <section id="contact" class="container reveal pt-5">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <div class="row">
+      <div class="col-md-6 reveal">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" placeholder="Enter your name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Your Email</label>
+            <input type="email" class="form-control" placeholder="Enter your email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="4" placeholder="Type your message"></textarea>
+          </div>
+          <button class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+      <div class="col-md-6 reveal">
+        <h5>Our Address</h5>
+        <p>Ganga Vihar, 46, Ganathpura Road, Bhakrota, Jaipur, Rajasthan 302026</p>
+        <p>Email: info@mylibrary.com | Phone: +91 9876543210</p>
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="250" style="border:0;" allowfullscreen></iframe> -->
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.0597220275517!2d75.69659797522277!3d26.869843576672725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4b7323f80ef7%3A0xcc76f5c49790e685!2sGURUKUL%20LIBRARY!5e0!3m2!1sen!2sin!4v1756727670174!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center p-3">
+    <p>© 2025 AK Gurukul Library | All Rights Reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll Reveal
+    function reveal() {
+      let reveals = document.querySelectorAll(".reveal");
+      for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    // Dark Mode Toggle
+    const toggleBtn = document.getElementById("darkModeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+  </script>
+</body>
+</html>
