@@ -37,6 +37,10 @@
     }
 
     /* section { padding: 80px 0; } */
+    section {
+  scroll-margin-top: 80px; /* navbar ki height jitna */
+}
+
 
     /* Gradient Buttons */
     .btn-primary {
@@ -87,16 +91,47 @@
     body.dark-mode .facility-card { background-color: #2a2a2a; color: #e0e0e0; }
     body.dark-mode .navbar-dark { background-color: #1c1c1c !important; }
     body.dark-mode footer { background-color: #1c1c1c !important; color: #e0e0e0; }
-
-    .hero {
-      background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover;
+/* background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover; */
+    /* .hero {
+      background: url('https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw') no-repeat center center/cover;
       color: white;
+      width: 100%;
       height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-    }
+    } */
+     .hero {
+  position: relative;
+  background: url('https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw') 
+              no-repeat center center;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 50, 0.7),  /* deep blue */
+    rgba(0, 0, 0, 0.5)    /* black mix */
+  );
+  z-index: -1;
+}
+
     .hero h1 {
       font-size: 3rem;
       font-weight: bold;
@@ -118,6 +153,38 @@
       transform: translateY(-15px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
+    /* body { scroll-behavior: smooth; background: #f9fafc; } */
+    /* .section-title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #0d6efd;
+      text-transform: uppercase;
+    } */
+    /* .pricing-card {
+      transition: all 0.3s ease;
+      border-radius: 15px;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    } */
+    /* .testimonial-card {
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    } */
+    footer {
+      background: #0d6efd;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
@@ -135,6 +202,8 @@
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#facilities">Facilities</a></li>
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#membership">Membership</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item ms-5">
             <button id="darkModeToggle" class="btn btn-secondary btn-sm">🌙 Dark Mode</button>
@@ -146,21 +215,26 @@
 
   <!-- Home Section -->
   
-
-   <section class="hero" id="home">
+  <div class="container">
+    <div class="row">
+        <section class="hero" id="home">
     <header id="home">
     <h1>Welcome to Gurukul Library</h1>
     <p>A world of knowledge at your fingertips</p>
-    <a href="#books" class="btn btn-primary btn-lg mt-3">Explore Books</a>
+    <img style="width: 25%; height: 20vh; border-radius: 100%;" src="https://lh3.googleusercontent.com/p/AF1QipN8M6TXAttN0qX6rZA37HJu4dIpLD_pSlsaqezr=s1360-w1360-h1020-rw"  alt="">
+    <!-- <a href="#books" class="btn btn-primary btn-lg mt-3">Explore Books</a> -->
   </header>
     <!-- <div>
       <h1>Welcome to Gurukul Library</h1>
       <p class="lead">Explore Knowledge | Ancient Wisdom | Modern Learning</p>
     </div> -->
   </section>
+    </div>
+  </div>
+ 
 
   <!-- About Section -->
-  <section id="about" class="container reveal pt-5">
+  <section id="about" class="container reveal pt-4">
     <h2 class="text-center mb-4">🌿 About Gurukul</h2>
     <p class="text-center">The Gurukul Library is a blend of tradition and modern knowledge.Our library is a peaceful space where knowledge meets imagination.A serene environment, we aim to inspire learning for everyone.</p>
   </section>
@@ -245,60 +319,11 @@
       </div>
     </div>
   </section>
-
-  <!-- Books Section -->
-  <section id="books" class="bg-light reveal pt-5 pb-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Our Book Collection</h2>
-      <div class="row mt-5">
-        <div class="col-md-3 mb-4 reveal">
-          <div class="card">
-            <img src="images/book1.jpg" class="card-img-top" alt="Book">
-            <div class="card-body">
-              <h5 class="card-title">Book Title 1</h5>
-              <p class="card-text">Author Name</p>
-              <img src="https://lh3.googleusercontent.com/p/AF1QipOksSGO3hxBSCLYgx-Uf9I0bC1597vqvyqSJvDv=s1360-w100-h100-rw" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4 reveal">
-          <div class="card">
-            <img src="images/book2.jpg" class="card-img-top" alt="Book">
-            <div class="card-body">
-              <h5 class="card-title">Book Title 2</h5>
-              <p class="card-text">Author Name</p>
-              <img src="https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w100-h100-rw" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4 reveal">
-          <div class="card">
-            <img src="images/book3.jpg" class="card-img-top" alt="Book">
-            <div class="card-body">
-              <h5 class="card-title">Book Title 3</h5>
-              <p class="card-text">Author Name</p>
-              <img src="https://lh3.googleusercontent.com/p/AF1QipN8M6TXAttN0qX6rZA37HJu4dIpLD_pSlsaqezr=s1360-w100-h100-rw" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4 reveal">
-          <div class="card">
-            <img src="images/book4.jpg" class="card-img-top" alt="Book">
-            <div class="card-body">
-              <h5 class="card-title">Book Title 4</h5>
-              <p class="card-text">Author Name</p>
-              <img src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0dyMUwVkPOHWT_w51zRq5aueRP7MxFk8W8gJftPIQyvhKTkkIL81j51p08wNY0VRg4m_PKGFv9Pvh24LpHy_EOMVsfoghyqQbaxdKt1jVsOfsZiSqt6lMf7D8SGtR4Nam1sjcB9XdKKSm=s1360-w100-h100-rw" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   
   <!-- Gallery -->
    <section id="gallery" class="bg-light reveal pt-5 pb-5">
     <div class="container">
-      <h2 class="text-center section-title">🖼️ Gallery</h2>
+      <h2 class="text-center mb-4">🖼️ Gallery</h2>
       <div class="row mt-5">
   <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
     <img
@@ -340,6 +365,77 @@
   </section>
 <!-- Gallery -->
 
+  <!-- Section 1: Library Fees Plans -->
+  <section id="membership" class="container py-5">
+    <h2 class="text-center mb-4">💳 Library Fees Plans</h2>
+    <div class="row mt-5 g-4 justify-content-center">
+      <!-- Half Day Plan -->
+      <div class="col-md-5">
+        <div class="card pricing-card text-center h-100 border-primary border-2">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Half Day</h5>
+            <h2 class="my-3">₹500<span class="fs-6">/month</span></h2>
+            <ul class="list-unstyled mb-4">
+              <li>Morning or Evening Access</li>
+              <li>Study Space + WiFi</li>
+              <li>Newspapers</li>
+            </ul>
+            <!-- <button class="btn btn-primary">Choose Plan</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- Full Day Plan -->
+      <div class="col-md-5">
+        <div class="card pricing-card text-center h-100 border-success border-2">
+          <div class="card-body">
+            <h5 class="card-title text-success">Full Day</h5>
+            <h2 class="my-3">₹700<span class="fs-6">/month</span></h2>
+            <ul class="list-unstyled mb-4">
+              <li>Access from Morning to Evening</li>
+              <li>Priority Seating</li>
+              <li>Unlimited Study Hours</li>
+            </ul>
+            <!-- <button class="btn btn-success">Choose Plan</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: What Our Readers Say -->
+  <section id="testimonials" class="container py-5">
+    <h2 class="text-center mb-4">🌟 What Our Readers Say</h2>
+    <div class="row mt-5 g-4">
+      <!-- Review 1 -->
+      <div class="col-md-4">
+        <div class="card testimonial-card h-100 p-3">
+          <div class="card-body text-center">
+            <p class="">"This library has a peaceful environment and amazing seating arrangment"</p>
+            <h6>— Ashok Sharma</h6>
+          </div>
+        </div>
+      </div>
+      <!-- Review 2 --> 
+      <div class="col-md-4">
+        <div class="card testimonial-card h-100 p-3">
+          <div class="card-body text-center">
+            <p class="">"Membership is totally worth it! Great facilities, good management, and a kind owner."</p>
+            <h6>— Mysterious Laughter</h6>
+          </div>
+        </div>
+      </div>
+      <!-- Review 3 -->
+      <div class="col-md-4">
+        <div class="card testimonial-card h-100 p-3">
+          <div class="card-body text-center">
+            <p class="">"Love the peaceful space! Perfect for focused reading."</p>
+            <h6>— Preeti Sharma</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
   <section id="contact" class="container reveal pt-5">
     <h2 class="text-center mb-4">Contact Us</h2>
@@ -363,8 +459,9 @@
       </div>
       <div class="col-md-6 reveal">
         <h5>Our Address</h5>
-        <p>Ganga Vihar, 46, Ganathpura Road, Bhakrota, Jaipur, Rajasthan 302026</p>
-        <p>Email: info@mylibrary.com | Phone: +91 9876543210</p>
+        <p>📍 Ganga Vihar, 46, Ganathpura Road, Bhakrota, Jaipur, Rajasthan 302026</p>
+        <p>📧 Email: akgurukullibrary@gmial.com |☎️ Phone: +91 9999999999</p>
+        <p>🕒 Hours: Mon–Sun: 6 AM – 10 PM </p>
         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="250" style="border:0;" allowfullscreen></iframe> -->
          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.0597220275517!2d75.69659797522277!3d26.869843576672725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4b7323f80ef7%3A0xcc76f5c49790e685!2sGURUKUL%20LIBRARY!5e0!3m2!1sen!2sin!4v1756727670174!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
