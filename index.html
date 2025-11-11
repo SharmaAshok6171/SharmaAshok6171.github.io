@@ -1,503 +1,334 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Library</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/9.2.0/mdb.min.css"
-  rel="stylesheet"
-/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivam Boys Hostel & PG | Modern — Vidhani, Jaipur</title>
+  <meta name="description" content="Shivam Boys Hostel & PG — Modern, secure and affordable boys hostel in Vidhani, Jaipur. CCTV, tiffin, purified water, shared rooms, non-attached bathrooms. Located on 200 feet main road." />
+  <meta name="keywords" content="Shivam Boys Hostel Vidhani, Boys Hostel Jaipur, PG Jaipur Vidhani, Hostel with CCTV, Tiffin service Jaipur" />
+  <link rel="canonical" href="https://shivamboyshostel.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shivam Boys Hostel & PG — Vidhani" />
+  <meta property="og:description" content="Safe & budget-friendly boys hostel on 200 feet main road, Vidhani. Shared rooms, non-attached bathrooms, water purifier, tiffin, CCTV." />
+  <meta property="og:image" content="/assets/hostel-og.jpg" />
+
+  <!-- Google font (system fallback retained) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      scroll-behavior: smooth;
-      transition: background-color 0.5s, color 0.5s;
+    :root{
+      --bg:#ffffff; --fg:#0b0b0b; --muted:#555; --accent:#000000; --glass: rgba(255,255,255,0.6);
+      --container:1140px; --radius:14px; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
     }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#ffffff 0%, #fafafa 100%);color:var(--fg);-webkit-font-smoothing:antialiased}
+    a{color:inherit}
 
-    header {
-      background: url('images/library-banner.jpg') no-repeat center center/cover;
-      color: white;
-      padding: 120px 20px;
-      text-align: center;
-    }
+    /* Layout */
+    .container{max-width:var(--container);margin:0 auto;padding:28px}
+    header{position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);z-index:40;border-bottom:1px solid #f0f0f0}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{height:56px;width:56px;border-radius:12px;border:2px solid var(--fg);display:flex;align-items:center;justify-content:center;font-weight:800}
+    nav a{margin-left:16px;text-decoration:none;font-weight:600}
+    .cta{display:inline-block;padding:10px 14px;border-radius:10px;border:2px solid var(--fg);font-weight:700}
 
-    header h1 {
-      font-size: 3rem;
-      animation: fadeDown 1.5s ease;
-    }
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px 0}
+    .hero-card{padding:28px;border-radius:20px;box-shadow:0 10px 30px rgba(10,10,10,0.04);border:1px solid #f0f0f0;background:linear-gradient(180deg, #fff 0%, #fff 100%)}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--fg);font-weight:700;margin-bottom:12px}
+    h1{font-size:34px;margin:6px 0 12px;line-height:1.05}
+    p.lead{color:var(--muted);margin:0 0 18px}
 
-    header p {
-      animation: fadeUp 2s ease;
-    }
+    /* Feature grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .feature{padding:12px;border-radius:12px;border:1px solid #f0f0f0;background:#fff;display:flex;gap:12px;align-items:center}
+    .feature svg{width:36px;height:36px}
+    .feature h4{margin:0;font-size:15px}
+    .feature p{margin:0;color:var(--muted);font-size:13px}
 
-    /* section { padding: 80px 0; } */
-    section {
-  scroll-margin-top: 80px; /* navbar ki height jitna */
-}
+    /* Quick sidebar */
+    .card-quick{padding:18px;border-radius:12px;border:1px solid #f0f0f0;background:linear-gradient(180deg,#fff,#fcfcfc)}
+    .stat{display:flex;gap:8px;align-items:center}
+    .price{font-size:20px;font-weight:800}
+    .note{color:var(--muted);font-size:13px}
 
+    /* Rooms grid */
+    .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .room{padding:14px;border-radius:12px;border:1px solid #f0f0f0;background:#fff;transition:transform .28s ease, box-shadow .28s ease}
+    .room:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(10,10,10,0.06)}
 
-    /* Gradient Buttons */
-    .btn-primary {
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      border: none;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .btn-primary:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 20px rgba(37, 117, 252, 0.5);
-    }
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px}
 
-    /* Cards */
-    .card {
-      transition: transform 0.3s, box-shadow 0.3s;
-      border-radius: 15px;
-    }
-    .card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
+    /* Rules / FAQ */
+    .rules{display:flex;gap:18px;align-items:flex-start}
+    .rules ul{margin:0;padding-left:20px;color:var(--muted)}
 
-    /* Navbar button gradient */
-    .navbar .btn-secondary {
-      background: linear-gradient(45deg, #7579ff, #b224ef);
-      border: none;
-      color: white;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .navbar .btn-secondary:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 20px rgba(178, 36, 239, 0.5);
-    }
+    /* Footer */
+    footer{margin-top:28px;padding:26px;border-top:1px solid #f1f1f1;color:var(--muted)}
 
-    /* Animations */
-    @keyframes fadeDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
-    @keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    /* Floating contact */
+    .whatsapp{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;border-radius:999px;padding:12px 16px;font-weight:700;box-shadow:0 12px 30px rgba(37,211,102,0.18);z-index:60}
 
-    /* Reveal Effect */
-    .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,3,3,0.45);z-index:80}
+    .modal.open{display:flex}
+    .modal .box{background:#fff;padding:20px;border-radius:12px;width:420px}
 
-    /* Dark Mode */
-    body.dark-mode { background-color: #121212; color: #e0e0e0; }
-    body.dark-mode header { color: white; }
-    body.dark-mode .bg-light { background-color: #1e1e1e !important; }
-    body.dark-mode .card { background-color: #2a2a2a; color: #e0e0e0; }
-    body.dark-mode .facility-card { background-color: #2a2a2a; color: #e0e0e0; }
-    body.dark-mode .navbar-dark { background-color: #1c1c1c !important; }
-    body.dark-mode footer { background-color: #1c1c1c !important; color: #e0e0e0; }
-/* background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover; */
-    /* .hero {
-      background: url('https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw') no-repeat center center/cover;
-      color: white;
-      width: 100%;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    } */
-     .hero {
-  position: relative;
-  background: url('https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw') 
-              no-repeat center center;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  z-index: 1;
-}
+    /* Responsive */
+    @media(max-width:1024px){.hero{grid-template-columns:1fr 340px}.rooms{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:720px){.nav{padding:8px 0}.hero{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.rooms{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}nav a{display:none}.cta{display:none}}
 
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(0, 0, 50, 0.7),  /* deep blue */
-    rgba(0, 0, 0, 0.5)    /* black mix */
-  );
-  z-index: -1;
-}
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 5px #000;
-    }
-
-    .facility-card {
-      border-radius: 15px;
-      transition: 0.3s;
-      background: #fff;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      border-radius: 15px;
-    }
-    .facility-card:hover {
-      transform: translateY(-5px);
-      transform: translateY(-15px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-    /* body { scroll-behavior: smooth; background: #f9fafc; } */
-    /* .section-title {
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2rem;
-      color: #0d6efd;
-      text-transform: uppercase;
-    } */
-    /* .pricing-card {
-      transition: all 0.3s ease;
-      border-radius: 15px;
-    }
-    .pricing-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-    } */
-    /* .testimonial-card {
-      border-radius: 15px;
-      transition: all 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-    } */
-    footer {
-      background: #0d6efd;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      margin-top: 40px;
-    }
+    /* small animation */
+    .pulse{animation:pulse 2.4s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,0,0,0)}50%{box-shadow:0 8px 28px rgba(0,0,0,0.06)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#home">📚 Gurukul Library</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav mx-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#facilities">Facilities</a></li>
-          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#membership">Membership</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-5">
-            <button id="darkModeToggle" class="btn btn-secondary btn-sm">🌙 Dark Mode</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Home Section -->
-  
   <div class="container">
-    <div class="row">
-        <section class="hero" id="home">
-    <header id="home">
-    <h1>Welcome to Gurukul Library</h1>
-    <p>A world of knowledge at your fingertips</p>
-    <img style="width: 25%; height: 20vh; border-radius: 100%;" src="https://lh3.googleusercontent.com/p/AF1QipN8M6TXAttN0qX6rZA37HJu4dIpLD_pSlsaqezr=s1360-w1360-h1020-rw"  alt="">
-    <!-- <a href="#books" class="btn btn-primary btn-lg mt-3">Explore Books</a> -->
-  </header>
-    <!-- <div>
-      <h1>Welcome to Gurukul Library</h1>
-      <p class="lead">Explore Knowledge | Ancient Wisdom | Modern Learning</p>
-    </div> -->
-  </section>
-    </div>
-  </div>
- 
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">SB</div>
+          <div>
+            <div style="font-size:13px;color:var(--muted)">Shivam Boys Hostel</div>
+            <div style="font-weight:800">Vidhani • Jaipur</div>
+          </div>
+        </div>
 
-  <!-- About Section -->
-  <section id="about" class="container reveal pt-4">
-    <h2 class="text-center mb-4">🌿 About Gurukul</h2>
-    <p class="text-center">The Gurukul Library is a blend of tradition and modern knowledge.Our library is a peaceful space where knowledge meets imagination.A serene environment, we aim to inspire learning for everyone.</p>
-  </section>
-
-    <!-- Facilities Section -->
-     <section id="facilities" class="container reveal pt-5 pb-5">
-    <h2 class="text-center mb-4">🏛️ Our Facilities</h2>
-    <div class="row mt-5 text-center">
-      <div class="col-md-3 reveal">
-        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
-         <div class="facility-card">
-          <h4>📖 Reading Hall</h4>
-          <p>Peaceful reading environment for students and teachers.</p>
+        <div style="display:flex;align-items:center;gap:12px">
+          <nav aria-label="Main navigation">
+            <a href="#rooms">Rooms</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#rules">Rules</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a class="cta" href="#contact">Enquire</a>
         </div>
       </div>
-      <div class="col-md-3 reveal">
-        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
-         <div class="facility-card">
-        <h4>❄️ Air Conditioned</h4>
-        <p>Fully air-conditioned reading halls for a comfortable learning experience.</p>
-      </div>
-      </div>
-      <div class="col-md-3 reveal">
-        <!-- <h5>🖥️ Computer Labs</h5><p>Modern study resources</p></div> -->
-         <div class="facility-card">
-          <h4>💧 Water Purifier</h4>
-          <p>Clean and safe drinking water available for all visitors.</p>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card" aria-labelledby="hero-title">
+          <span class="eyebrow">Safe • Secure • Affordable</span>
+          <h1 id="hero-title">Modern stay for students & professionals — <br>Shivam Boys Hostel, Vidhani</h1>
+          <p class="lead">Located under a parchni shop on the 200 feet main road. Shared rooms, non-attached bathrooms, purified water, daily tiffin, and 24×7 CCTV — everything for a comfortable, disciplined stay.</p>
+
+          <div class="features" id="facilities">
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/></svg>
+              <div>
+                <h4>Shareable Rooms</h4>
+                <p>Single / double / triple options with fan/AC choices.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h18" stroke="currentColor" stroke-width="1.4"/></svg>
+              <div>
+                <h4>Non-attached Bathrooms</h4>
+                <p>Clean, scheduled housekeeping and hot water.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/></svg>
+              <div>
+                <h4>Water Purifier</h4>
+                <p>RO/UV filtered drinking water available 24/7.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/></svg>
+              <div>
+                <h4>Tiffin Service</h4>
+                <p>Fresh homely meals — subscribe monthly or daily.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 7v10l4-4 4 4 4-4 4 4V7H3z" stroke="currentColor" stroke-width="1.2"/></svg>
+              <div>
+                <h4>CCTV & Security</h4>
+                <p>24×7 CCTV monitoring of all common areas.</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6" stroke="currentColor" stroke-width="1.2"/></svg>
+              <div>
+                <h4>Discipline</h4>
+                <p>Late-night entry after 10:30 PM not allowed.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+            <a href="#contact" class="cta pulse">Book a visit</a>
+            <button onclick="openModal()" style="padding:10px 12px;border-radius:10px;border:1px solid #ddd;background:transparent">See Pricing</button>
+            <div style="color:var(--muted);font-size:13px">Starts at <strong>₹5,000/month</strong></div>
+          </div>
         </div>
-      </div>  
-      <div class="col-md-3 reveal">
-        <!-- <h5>👥 Events</h5><p>Workshops & discussions</p> -->
-         <div class="facility-card">
-          <h4>🍽️ Lunch Room</h4>
-          <p>Separate room available for students and teachers to have their meals.</p>
+
+        <aside class="card-quick">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Location</div>
+              <div style="font-weight:800">Main 200 ft Road, Vidhani</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:12px;color:var(--muted)">Rating</div>
+              <div style="font-weight:800">4.6 ★</div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:12px"><strong>Contact</strong><br><a href="tel:+917851887683">+91 7851887683</a></div>
+
+          <div style="margin-bottom:10px"><strong>Office hours</strong><div class="note">07:00 — 22:30 (Guests & visitors by appointment)</div></div>
+
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <a href="#contact" class="cta">Enquire</a>
+            <a class="pulse" href="https://www.google.com/maps?q=Vidhani+Jaipur" target="_blank" style="padding:10px;border-radius:10px;border:1px solid #ddd;text-decoration:none">Get Directions</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="rooms">
+        <h2 style="margin-top:4px">Rooms & Pricing</h2>
+        <div class="rooms" aria-live="polite">
+          <div class="room">
+            <h3>Triple Sharing</h3>
+            <div class="note">Approx 120 sq.ft — Shared fan/AC options</div>
+            <div style="margin-top:8px;font-weight:800">₹5,000 / month</div>
+          </div>
+
+          <div class="room">
+            <h3>Double Sharing</h3>
+            <div class="note">Approx 100 sq.ft — Comfortable for two</div>
+            <div style="margin-top:8px;font-weight:800">₹6,500 / month</div>
+          </div>
+
+          <div class="room">
+            <h3>Single (Limited)</h3>
+            <div class="note">Approx 90 sq.ft — Best for privacy</div>
+            <div style="margin-top:8px;font-weight:800">₹8,500 / month</div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="row mt-5 text-center">
-      <div class="col-md-3 reveal">
-        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
-         <div class="facility-card">
-        <h4>📰 Newspaper</h4>
-        <p>Daily newspapers for general knowledge & updates.</p>
-      </div>
-      </div>
-      <div class="col-md-3 reveal">
-        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
-        <div class="facility-card">
-        <h4>📶 Wi-Fi Suvidha</h4>
-        <p>High-speed internet for research, online study, and digital resources.</p>
-      </div>
-      </div>
-      <div class="col-md-3 reveal">
-        <!-- <h5>🖥️ Computer Labs</h5><p>Modern study resources</p></div> -->
-         <div class="facility-card">
-        <h4>👩‍🎓 Separate Seating</h4>
-        <p>Dedicated, comfortable space for female students.</p>
-      </div>
-      </div>  
-      <div class="col-md-3 reveal">
-        <!-- <h5>👥 Events</h5><p>Workshops & discussions</p> -->
-        <div class="facility-card">
-        <h4>🚲 Bike Parking</h4>
-        <p>Secure and spacious parking area for students and staff bikes.</p>
-      </div>
-      </div>
-    </div>
-    <div class="row mt-5 text-center">
-      <div class="col-md-3 reveal">
-        <!-- <h5>📖 Reading Rooms</h5><p>Quiet and cozy spaces</p> -->
-         <div class="facility-card">
-        <h4>📹 CCTV Surveillance</h4>
-        <p>Fully CCTV fitted campus for safety, monitoring, and discipline.</p>
-      </div>
-      </div>
-      <div class="col-md-3 reveal">
-        <!-- <h5>💻 Free Wi-Fi</h5><p>Stay connected always</p> -->
-        <div class="facility-card">
-        <h4>🚻 Washroom Facility</h4>
-        <p>Separate and clean washrooms for male and female students.</p>
-      </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Gallery -->
-   <section id="gallery" class="bg-light reveal pt-5 pb-5">
-    <div class="container">
-      <h2 class="text-center mb-4">🖼️ Gallery</h2>
-      <div class="row mt-5">
-  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-    <img
-      src="https://lh3.googleusercontent.com/p/AF1QipOtuJNNu9sXJ0iCWizKiyePVadrFqXDN4YM8_91=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Boat on Calm Water"/>
+      </section>
 
-    <img
-      src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4np0dyMUwVkPOHWT_w51zRq5aueRP7MxFk8W8gJftPIQyvhKTkkIL81j51p08wNY0VRg4m_PKGFv9Pvh24LpHy_EOMVsfoghyqQbaxdKt1jVsOfsZiSqt6lMf7D8SGtR4Nam1sjcB9XdKKSm=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Wintry Mountain Landscape"/>
-  </div>
+      <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery">
+          <img loading="lazy" alt="Hostel exterior" src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzYL5DhHMhDj2_O-w1fwLoicOzfoJIBU5fLVIl1N0gvdNxjXbvjQDxaSSqP2dKfZEzBCf8rwL83fW_13_xIrZi7-eEzDfc7hJcyMBcS_i_Bdc_Dla3pvHG4hLPnxoxgQducRpMe-w=s1360-w1360-h1020-rw" />
+          <img loading="lazy" alt="Room example" src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw7K90PnqEACorXsyOqpWoBkZw1pminsPpsVLu9hbbIy24JbY8AF_hTKtUHDGqEw7WI_IsBTednoKtDhZlJoFXOnsz1S37f4-h2skK6iOMEeRLahKyzXMLluqZ-ZWPiddvM0irPjw=s1360-w1360-h1020-rw" />
+          <img loading="lazy" alt="Common area" src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz88CrLG_nX_ogpz_kc2TzVXnC9Xl1VGupm0XEpRcXbgYJ2n6gyWtxpgtawnljV_VlFf1EXfyR4pMoNpOM4Co28VE1EXmeRCZeG8d5ihQ4OT6l1CEmBrtVTZjSHLn2DT4YxsDuO=s1360-w1360-h1020-rw" />
+          <img loading="lazy" alt="Tiffin meal" src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSx9uk50q480VWNfHyLiD5RJMe0gXXPynrVauKEMPP9Zw_aUJqslZY5LrjynIDPJbyVUJTwY2BVYij25Y-edonZCqCPo-5d_xJjFFKRP71nkUhgJaRflj2nVMZTzouTprxcfmSTSug=s1360-w1360-h1020-rw" />
+        </div>
+      </section>
 
-  <div class="col-lg-4 mb-4 mb-lg-0">
-    <img
-      src="https://lh3.googleusercontent.com/p/AF1QipNyBPgtDoyFv26d8YA0z_bbJfs517w71ehMHHvh=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Mountains in the Clouds"/>
-
-    <img
-      src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4noKeEWc2OxEMhjLooHnjegZr1oGIg6OP7CZDTrAdf0PVkIcoP9oxw7lpM54-QO49m1gS2DZN80F-vmKSpmTuhCy_bj7KCv6Lk5elL0XxlN8wmpXdjSA9BiwI8nWvxmP9AB-tSezVyp6y8uS=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Boat on Calm Water"/>
-  </div>
-
-  <div class="col-lg-4 mb-4 mb-lg-0">
-    <img
-      src="https://lh3.googleusercontent.com/p/AF1QipPDxcEYoPgOudjro_CSHjoTzPJ9BQsB6NcWGjD4=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Waves at Sea"/>
-
-    <img
-      src="https://lh3.googleusercontent.com/p/AF1QipPzpYdOJ6epI1OWT7cFovtCWEyyIJlf4klKDU1I=s1360-w1360-h1020-rw"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt="Yosemite National Park"/>
-  </div>
-</div>
-    </div>
-  </section>
-<!-- Gallery -->
-
-  <!-- Section 1: Library Fees Plans -->
-  <section id="membership" class="container py-5">
-    <h2 class="text-center mb-4">💳 Library Fees Plans</h2>
-    <div class="row mt-5 g-4 justify-content-center">
-      <!-- Half Day Plan -->
-      <div class="col-md-5">
-        <div class="card pricing-card text-center h-100 border-primary border-2">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Half Day</h5>
-            <h2 class="my-3">₹500<span class="fs-6">/month</span></h2>
-            <ul class="list-unstyled mb-4">
-              <li>Morning or Evening Access</li>
-              <li>Study Space + WiFi</li>
-              <li>Newspapers</li>
+      <section id="rules" style="margin-top:18px">
+        <h2>Rules & Safety</h2>
+        <div class="rules">
+          <div style="flex:1">
+            <ul>
+              <li>Late-night entry after <strong>10:30 PM</strong> is not allowed.</li>
+              <li>Visitors permitted only during daytime with permission.</li>
+              <li>Smoking, alcohol, and illegal activities are strictly prohibited.</li>
+              <li>Maintain cleanliness and respect fellow residents.</li>
             </ul>
-            <!-- <button class="btn btn-primary">Choose Plan</button> -->
+          </div>
+          <div style="width:320px;border:1px solid #f0f0f0;padding:12px;border-radius:10px;background:#fff">
+            <strong>Security</strong>
+            <p class="note">24×7 CCTV, secure locks, and staff on-site for emergencies.</p>
+            <strong>Emergency</strong>
+            <p class="note">Warden contact: <a href="tel:+917851887683">+91 7851887683</a></p>
           </div>
         </div>
+      </section>
+
+      <section id="blog" style="margin-top:20px">
+        <h2>From the Hostel Blog</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
+          <article style="padding:14px;border-radius:10px;border:1px solid #f0f0f0;background:#fff">
+            <h4>5 Tips to Save Money While Living in a PG</h4>
+            <p class="note">Small habits such as sharing groceries and managing electricity can save a lot. Read more...</p>
+          </article>
+          <article style="padding:14px;border-radius:10px;border:1px solid #f0f0f0;background:#fff">
+            <h4>Why Choose Shivam Boys Hostel in Vidhani</h4>
+            <p class="note">Centrally located, safe, and affordable — built for young learners and professionals.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:20px">
+        <h2>Contact & Location</h2>
+        <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
+          <div>
+            <p><strong>Address:</strong> Shivam Boys Hostel, Under Parchni Shop, Main 200 Feet Road, Vidhani, Jaipur, Rajasthan - 302022</p>
+            <p><strong>Phone:</strong> <a href="tel:+917851887683">+91 7851887683</a></p>
+            <p><strong>Email:</strong> <a href="mailto:shivam.hostel@example.com">shivam.hostel@example.com</a></p>
+            <p><strong>Find us on Maps:</strong> <a href="https://www.google.com/maps?q=Vidhani+Jaipur" target="_blank">Open Google Maps</a></p>
+
+            <div style="margin-top:12px">
+              <strong>Send an enquiry</strong>
+              <form onsubmit="event.preventDefault();alert('Thanks — we will contact you soon!')" style="margin-top:8px;display:grid;gap:8px;max-width:500px">
+                <input required placeholder="Your name" />
+                <input required placeholder="Phone / WhatsApp" />
+                <select>
+                  <option>Triple Sharing</option>
+                  <option>Double Sharing</option>
+                  <option>Single</option>
+                </select>
+                <textarea rows="3" placeholder="Message / Preferred move-in date"></textarea>
+                <div style="display:flex;gap:8px"><button class="cta" type="submit">Send</button><button type="button" onclick="openModal()" style="padding:10px;border-radius:10px;border:1px solid #ddd;background:transparent">Call</button></div>
+              </form>
+            </div>
+          </div>
+
+          <aside style="border:1px solid #f0f0f0;padding:12px;border-radius:10px;background:#fff">
+            <strong>Map (preview)</strong>
+            <div style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid #eee">
+              <iframe src="https://www.google.com/maps?q=Vidhani+Jaipur&output=embed" width="100%" height="220" style="border:0" loading="lazy"></iframe>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© 2025 Shivam Boys Hostel & PG — Vidhani, Jaipur</div>
+        <div style="color:var(--muted)">Safe • CCTV • Tiffin • Non-attached Bathrooms • Main 200 ft Road</div>
       </div>
-      <!-- Full Day Plan -->
-      <div class="col-md-5">
-        <div class="card pricing-card text-center h-100 border-success border-2">
-          <div class="card-body">
-            <h5 class="card-title text-success">Full Day</h5>
-            <h2 class="my-3">₹700<span class="fs-6">/month</span></h2>
-            <ul class="list-unstyled mb-4">
-              <li>Access from Morning to Evening</li>
-              <li>Priority Seating</li>
-              <li>Unlimited Study Hours</li>
-            </ul>
-            <!-- <button class="btn btn-success">Choose Plan</button> -->
-          </div>
-        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a class="whatsapp" href="https://wa.me/917851887683" target="_blank">WhatsApp Us</a>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="box">
+        <h3>Room Pricing</h3>
+        <p class="note">Triple: ₹5,000 | Double: ₹6,500 | Single: ₹8,500</p>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end"><button onclick="closeModal()" style="padding:8px 12px;border-radius:8px;border:1px solid #ddd;background:transparent">Close</button></div>
       </div>
     </div>
-  </section>
 
-  <!-- Section 2: What Our Readers Say -->
-  <section id="testimonials" class="container py-5">
-    <h2 class="text-center mb-4">🌟 What Our Readers Say</h2>
-    <div class="row mt-5 g-4">
-      <!-- Review 1 -->
-      <div class="col-md-4">
-        <div class="card testimonial-card h-100 p-3">
-          <div class="card-body text-center">
-            <p class="">"This library has a peaceful environment and amazing seating arrangment"</p>
-            <h6>— Ashok Sharma</h6>
-          </div>
-        </div>
-      </div>
-      <!-- Review 2 --> 
-      <div class="col-md-4">
-        <div class="card testimonial-card h-100 p-3">
-          <div class="card-body text-center">
-            <p class="">"Membership is totally worth it! Great facilities, good management, and a kind owner."</p>
-            <h6>— Mysterious Laughter</h6>
-          </div>
-        </div>
-      </div>
-      <!-- Review 3 -->
-      <div class="col-md-4">
-        <div class="card testimonial-card h-100 p-3">
-          <div class="card-body text-center">
-            <p class="">"Love the peaceful space! Perfect for focused reading."</p>
-            <h6>— Preeti Sharma</h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="container reveal pt-5">
-    <h2 class="text-center mb-4">Contact Us</h2>
-    <div class="row">
-      <div class="col-md-6 reveal">
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-control" placeholder="Enter your name">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Your Email</label>
-            <input type="email" class="form-control" placeholder="Enter your email">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Message</label>
-            <textarea class="form-control" rows="4" placeholder="Type your message"></textarea>
-          </div>
-          <button class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
-      <div class="col-md-6 reveal">
-        <h5>Our Address</h5>
-        <p>📍 Ganga Vihar, 46, Ganathpura Road, Bhakrota, Jaipur, Rajasthan 302026</p>
-        <p>📧 Email: akgurukullibrary@gmial.com |☎️ Phone: +91 9999999999</p>
-        <p>🕒 Hours: Mon–Sun: 6 AM – 10 PM </p>
-        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="250" style="border:0;" allowfullscreen></iframe> -->
-         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.0597220275517!2d75.69659797522277!3d26.869843576672725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4b7323f80ef7%3A0xcc76f5c49790e685!2sGURUKUL%20LIBRARY!5e0!3m2!1sen!2sin!4v1756727670174!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center p-3">
-    <p>© 2025 AK Gurukul Library | All Rights Reserved</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Scroll Reveal
-    function reveal() {
-      let reveals = document.querySelectorAll(".reveal");
-      for (let i = 0; i < reveals.length; i++) {
-        let windowHeight = window.innerHeight;
-        let elementTop = reveals[i].getBoundingClientRect().top;
-        let elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        } else {
-          reveals[i].classList.remove("active");
-        }
-      }
-    }
-    window.addEventListener("scroll", reveal);
-    reveal();
+    // Modal controls
+    function openModal(){document.getElementById('modal').classList.add('open');document.getElementById('modal').setAttribute('aria-hidden','false')}
+    function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('modal').setAttribute('aria-hidden','true')}
 
-    // Dark Mode Toggle
-    const toggleBtn = document.getElementById("darkModeToggle");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      toggleBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-    });
+    // Close modal on escape
+    document.addEventListener('keydown',function(e){if(e.key==='Escape') closeModal()});
   </script>
 </body>
 </html>
