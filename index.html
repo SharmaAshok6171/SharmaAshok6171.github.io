@@ -274,35 +274,64 @@
         <div class="row">
           <div class="col-lg-8 col-md-6 col-sm-6">
 <h2>Contact & Location</h2>
-        <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px">
-          <div>
-            <p><strong>Address:</strong> Shivam Boys Hostel, Under Parchni Shop, Main 200 Feet Road, Vidhani, Jaipur, Rajasthan - 302022</p>
+        <!-- <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:12px"> -->
+          <!-- <div> -->
+            <p><strong>Address:</strong> Shivam Boys Hostel, near GSD designing college main 200 feet Mahal road Ramchandpura, vidhani, Sitapura, Jaipur, Rajasthan 302022</p>
             <p><strong>Phone:</strong> <a href="tel:+917851887683">+91 7851887683</a></p>
             <p><strong>Email:</strong> <a href="mailto:shivam.hostel@example.com">shivam.hostel@example.com</a></p>
-            <p><strong>Find us on Maps:</strong> <a href="https://www.google.com/maps?q=Vidhani+Jaipur" target="_blank">Open Google Maps</a></p>
+            <p><strong>Find us on Maps:</strong> <a href="https://share.google/ONPYQ05hpqUagFUwG" target="_blank">Open Google Maps</a></p>
 
-            <div style="margin-top:12px">
-              <strong>Send an enquiry</strong>
-              <form onsubmit="event.preventDefault();alert('Thanks — we will contact you soon!')" style="margin-top:8px;display:grid;gap:8px;max-width:500px">
-                <input required placeholder="Your name" />
-                <input required placeholder="Phone / WhatsApp" />
-                <select>
-                  <option>Triple Sharing</option>
-                  <option>Double Sharing</option>
-                  <option>Single</option>
-                </select>
-                <textarea rows="3" placeholder="Message / Preferred move-in date"></textarea>
-                <div style="display:flex;gap:8px"><button class="cta" type="submit">Send</button><button type="button" onclick="openModal()" style="padding:10px;border-radius:10px;border:1px solid #ddd;background:transparent">Call</button></div>
-              </form>
-            </div>
-          </div>
-          </div>
+             <div style="margin-top:12px">
+  <strong>Send an enquiry</strong>
+  <form id="whatsapp-form" style="margin-top:8px;display:grid;gap:8px;max-width:500px">
+    <input type="text" id="name" required placeholder="Your name" />
+    <input type="text" id="phone" required placeholder="Phone / WhatsApp" />
+    <select id="roomType">
+      <option>Triple Sharing</option>
+      <option>Double Sharing</option>
+      <option>Single</option>
+    </select>
+    <textarea id="message" rows="3" placeholder="Message / Preferred move-in date"></textarea>
+    <div style="display:flex;gap:8px">
+      <button class="cta" type="submit">Send on WhatsApp</button>
+      <button type="button" onclick="openModal()" style="padding:10px;border-radius:10px;border:1px solid #ddd;background:transparent">Call</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form values
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const roomType = document.getElementById('roomType').value;
+    const message = document.getElementById('message').value;
+
+    // Replace with your WhatsApp number
+    const phoneNumber = '+917851887683';
+
+    // Create message text
+    const whatsappMessage = `📩 *New Enquiry*%0A
+👤 Name: ${name}%0A
+📞 Phone: ${phone}%0A
+🏠 Room Type: ${roomType}%0A
+💬 Message: ${message}`;
+
+    // Open WhatsApp
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+    window.open(whatsappUrl, '_blank');
+  });
+</script>
+          <!-- </div> -->
+          <!-- </div> -->
            </div>
           <div class="col-lg-4 col-md-6 col-sm-6">
  <aside style="border:1px solid #f0f0f0;padding:12px;border-radius:10px;background:#fff">
             <strong>Map (preview)</strong>
             <div style="margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid #eee">
-              <iframe src="https://www.google.com/maps?q=Vidhani+Jaipur&output=embed" width="100%" height="220" style="border:0" loading="lazy"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.7748867130904!2d75.8662801!3d26.775610000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc8efe7b639c7%3A0xd626ea1d789ae7e3!2sShivam%20Boys%20Hostal%20%26%20PG!5e1!3m2!1sen!2sin!4v1762937442012!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </aside>
           </div>
