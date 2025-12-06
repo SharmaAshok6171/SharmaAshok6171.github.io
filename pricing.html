@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — GK Photo Studio Balwala</title>
+  <meta name="description" content="Transparent and affordable pricing for all photography services at GK Photo Studio Balwala — portraits, weddings, events, and more." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#ffffff; --muted:#6c757d; --accent:#e83e8c; --accent-2:#0d6efd; --card:#f8f9fa; --glass: rgba(255,255,255,0.6);
+      --container:1100px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fff,#fbfbfd);color:#111;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent-2)}
+    .container-sm{max-width:var(--container)}
+
+    /* Header */
+    header.navbar{backdrop-filter:blur(6px);background:rgba(255,255,255,0.7);border-bottom:1px solid #eee}
+    .brand-logo{height:56px;width:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+
+    /* Hero */
+    .pricing-hero{padding:48px 0 32px 0;text-align:center;margin-bottom:32px}
+    .pricing-hero h1{font-size:48px;margin-bottom:12px;font-weight:800}
+    .pricing-hero p{font-size:18px;color:var(--muted)}
+
+    /* Pricing Cards */
+    .pricing-card{border-radius:14px;padding:28px;background:#fff;border:2px solid #f0f0f0;transition:all .3s ease;position:relative;height:100%}
+    .pricing-card:hover{border-color:var(--accent-2);box-shadow:0 12px 40px rgba(13,110,253,0.12)}
+    .pricing-card.featured{border-color:var(--accent-2);box-shadow:0 18px 60px rgba(13,110,253,0.15)}
+    .pricing-card.featured .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent-2);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600}
+
+    .pricing-title{font-size:20px;font-weight:700;margin-bottom:8px}
+    .pricing-price{font-size:42px;font-weight:800;color:var(--accent-2);margin:16px 0}
+    .pricing-subtitle{color:var(--muted);font-size:14px;margin-bottom:24px}
+
+    .pricing-features{list-style:none;padding:0;margin:24px 0}
+    .pricing-features li{padding:10px 0;color:var(--muted);font-size:14px;border-bottom:1px solid #f5f5f5;display:flex;gap:10px}
+    .pricing-features li:last-child{border:0}
+    .pricing-features li:before{content:"✓";color:var(--accent-2);font-weight:bold;min-width:20px;flex-shrink:0}
+
+    /* Pricing Table */
+    .pricing-table{width:100%;border-collapse:collapse;margin:32px 0}
+    .pricing-table th{background:var(--card);padding:16px;text-align:left;font-weight:600;border-bottom:2px solid #f0f0f0}
+    .pricing-table td{padding:14px 16px;border-bottom:1px solid #f0f0f0}
+    .pricing-table tr:hover{background:linear-gradient(90deg,rgba(13,110,253,0.03),transparent)}
+
+    /* Package Cards Grid */
+    .package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0}
+
+    /* Footer */
+    footer{margin-top:36px;padding:22px 0;color:var(--muted);border-top:1px solid #f1f1f1}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* FAQ */
+    .faq-item{border-bottom:1px solid #f0f0f0;padding:20px 0}
+    .faq-item:last-child{border:0}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      .package-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .pricing-hero h1{font-size:32px}
+      .pricing-hero p{font-size:15px}
+      .package-grid{grid-template-columns:1fr;gap:16px}
+      .pricing-card{padding:20px}
+      .pricing-title{font-size:18px}
+      .pricing-price{font-size:32px;margin:12px 0}
+      .pricing-features li{font-size:12px;padding:8px 0}
+      h2{font-size:20px}
+      .pricing-table{font-size:12px}
+      .pricing-table td, .pricing-table th{padding:10px}
+      header.navbar{padding:8px 0}
+      .container-sm{padding:0 16px}
+    }
+    @media(max-width:640px){
+      .pricing-hero h1{font-size:24px}
+      .pricing-hero p{font-size:13px}
+      .pricing-card{padding:16px}
+      .pricing-title{font-size:16px}
+      .pricing-price{font-size:28px}
+      .pricing-subtitle{font-size:12px}
+      .pricing-features li{font-size:11px;padding:6px 0}
+      h2{font-size:18px}
+      .pricing-table{font-size:11px}
+      .pricing-table td, .pricing-table th{padding:8px;line-height:1.4}
+      .faq-item h5{font-size:14px}
+      .btn{padding:0.4rem 0.8rem;font-size:13px}
+      header.navbar .nav-links{display:none}
+    }
+    @media(max-width:480px){
+      .container-sm{padding:0 12px}
+      .pricing-hero h1{font-size:20px;padding:24px 0 16px 0}
+      .pricing-card{padding:14px}
+      .pricing-title{font-size:15px}
+      .pricing-price{font-size:24px;margin:10px 0}
+      .pricing-subtitle{font-size:11px}
+      .pricing-features li{font-size:10px;padding:5px 0}
+      h2{font-size:16px}
+      .pricing-table{font-size:10px}
+      .pricing-table td, .pricing-table th{padding:6px}
+      .btn{padding:0.35rem 0.7rem;font-size:12px}
+      .faq-item{padding:12px 0}
+      .faq-item h5{font-size:13px}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar sticky-top shadow-sm">
+    <div class="container container-sm d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-3">
+        <div class="brand-logo">GK</div>
+        <div>
+          <div style="font-size:12px;color:var(--muted)">GK Photo Studio</div>
+          <div style="font-weight:800">Balwala — Portraits • Weddings • Prints</div>
+        </div>
+      </div>
+
+      <nav class="nav-links d-flex align-items-center gap-3">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-primary btn-sm" href="contact.html">Book a Shoot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container container-sm">
+    <section class="pricing-hero">
+      <h1>Simple, Transparent Pricing</h1>
+      <p>Professional photography services at affordable rates. No hidden charges — just quality and value.</p>
+    </section>
+
+    <!-- Main Pricing Packages -->
+    <section class="package-grid mb-5">
+      <!-- Basic -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">📸 Basic</h3>
+          <div class="pricing-price">₹499</div>
+          <div class="pricing-subtitle">ID & Passport Photos</div>
+
+          <ul class="pricing-features">
+            <li>Same-day printing</li>
+            <li>Multiple sizes available</li>
+            <li>Retouching included</li>
+            <li>Digital copy (high-res)</li>
+            <li>Government compliant</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Portrait -->
+      <div class="reveal">
+        <div class="pricing-card featured">
+          <span class="badge">MOST POPULAR</span>
+          <h3 class="pricing-title">👤 Portrait Session</h3>
+          <div class="pricing-price">₹2,999</div>
+          <div class="pricing-subtitle">1-hour professional shoot</div>
+
+          <ul class="pricing-features">
+            <li>1-hour studio session</li>
+            <li>5 edited photos</li>
+            <li>Professional lighting</li>
+            <li>Multiple outfit changes</li>
+            <li>Digital files included</li>
+            <li>Prints available</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Portrait -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">🌟 Premium Portrait</h3>
+          <div class="pricing-price">₹5,999</div>
+          <div class="pricing-subtitle">2-hour extended session</div>
+
+          <ul class="pricing-features">
+            <li>2-hour session</li>
+            <li>10 edited photos</li>
+            <li>Indoor + outdoor</li>
+            <li>Professional styling</li>
+            <li>Printed album</li>
+            <li>All digital files</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Basic -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">💍 Wedding Basic</h3>
+          <div class="pricing-price">₹8,999</div>
+          <div class="pricing-subtitle">6-hour coverage</div>
+
+          <ul class="pricing-features">
+            <li>6-hour coverage</li>
+            <li>Single photographer</li>
+            <li>300+ edited photos</li>
+            <li>Digital album</li>
+            <li>Quick turnaround</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Standard -->
+      <div class="reveal">
+        <div class="pricing-card featured">
+          <span class="badge">BEST VALUE</span>
+          <h3 class="pricing-title">👑 Wedding Standard</h3>
+          <div class="pricing-price">₹15,999</div>
+          <div class="pricing-subtitle">Full-day coverage (10 hrs)</div>
+
+          <ul class="pricing-features">
+            <li>10-hour full day</li>
+            <li>2 photographers</li>
+            <li>600+ edited photos</li>
+            <li>Pre-wedding shoot</li>
+            <li>Printed album</li>
+            <li>Video highlights</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Premium -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">✨ Wedding Premium</h3>
+          <div class="pricing-price">₹24,999</div>
+          <div class="pricing-subtitle">Luxury full coverage</div>
+
+          <ul class="pricing-features">
+            <li>12-hour coverage</li>
+            <li>3 photographers</li>
+            <li>1000+ photos</li>
+            <li>Pre + post wedding</li>
+            <li>Premium album</li>
+            <li>Full cinematic video</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">🎉 Event Coverage</h3>
+          <div class="pricing-price">₹3,999</div>
+          <div class="pricing-subtitle">Per hour</div>
+
+          <ul class="pricing-features">
+            <li>Minimum 4 hours</li>
+            <li>Professional photographer</li>
+            <li>Candid focus</li>
+            <li>200+ photos/hour</li>
+            <li>Digital delivery</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prints -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">🖼️ Photo Prints</h3>
+          <div class="pricing-price">From ₹10</div>
+          <div class="pricing-subtitle">Per print</div>
+
+          <ul class="pricing-features">
+            <li>4x6" to 20x24"</li>
+            <li>Glossy/matte finish</li>
+            <li>Canvas prints</li>
+            <li>Custom framing</li>
+            <li>Quick turnaround</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editing -->
+      <div class="reveal">
+        <div class="pricing-card">
+          <h3 class="pricing-title">✨ Photo Editing</h3>
+          <div class="pricing-price">₹50+</div>
+          <div class="pricing-subtitle">Per image</div>
+
+          <ul class="pricing-features">
+            <li>Color correction</li>
+            <li>Skin retouching</li>
+            <li>Background removal</li>
+            <li>Special effects</li>
+            <li>Batch discounts</li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <a class="btn btn-primary" href="contact.html">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Pricing Table -->
+    <section class="mb-5">
+      <h2 style="margin-bottom:24px">Detailed Pricing Breakdown</h2>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Duration</th>
+            <th>Base Price</th>
+            <th>What's Included</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ID/Passport</strong></td>
+            <td>30 mins</td>
+            <td>₹299–₹499</td>
+            <td>2–4 prints + digital</td>
+          </tr>
+          <tr>
+            <td><strong>Portrait Session</strong></td>
+            <td>1 hour</td>
+            <td>₹999–₹2,999</td>
+            <td>5–10 edited images</td>
+          </tr>
+          <tr>
+            <td><strong>Family Portrait</strong></td>
+            <td>1.5 hours</td>
+            <td>₹3,499</td>
+            <td>8 edited photos + album</td>
+          </tr>
+          <tr>
+            <td><strong>Wedding (Full Day)</strong></td>
+            <td>10–12 hours</td>
+            <td>₹8,999–₹24,999</td>
+            <td>300–1000 photos + album</td>
+          </tr>
+          <tr>
+            <td><strong>Event Coverage</strong></td>
+            <td>Per hour</td>
+            <td>₹3,999/hr</td>
+            <td>200+ candid photos</td>
+          </tr>
+          <tr>
+            <td><strong>On-Location Fee</strong></td>
+            <td>—</td>
+            <td>₹500–₹2,000</td>
+            <td>Beyond 5km from studio</td>
+          </tr>
+          <tr>
+            <td><strong>Prints (per unit)</strong></td>
+            <td>—</td>
+            <td>₹10–₹200</td>
+            <td>Depends on size & finish</td>
+          </tr>
+          <tr>
+            <td><strong>Photo Editing</strong></td>
+            <td>Per image</td>
+            <td>₹50–₹300</td>
+            <td>Basic to premium edits</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="mb-5">
+      <h2 style="margin-bottom:24px">Special Offers & Discounts</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div style="border-radius:12px;padding:20px;background:linear-gradient(135deg,rgba(232,62,140,0.1),rgba(13,110,253,0.1));border-left:4px solid var(--accent)">
+            <h5><i class="fa-solid fa-tag"></i> Package Discounts</h5>
+            <p class="text-muted small">Book multiple services and get 10–20% off. Wedding + prints package: special rate!</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="border-radius:12px;padding:20px;background:linear-gradient(135deg,rgba(232,62,140,0.1),rgba(13,110,253,0.1));border-left:4px solid var(--accent)">
+            <h5><i class="fa-solid fa-star"></i> Group Bookings</h5>
+            <p class="text-muted small">Large events or corporate shoots? Get special group rates. Contact us for custom quotes.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="border-radius:12px;padding:20px;background:linear-gradient(135deg,rgba(232,62,140,0.1),rgba(13,110,253,0.1));border-left:4px solid var(--accent)">
+            <h5><i class="fa-solid fa-calendar"></i> Off-Season Deals</h5>
+            <p class="text-muted small">Book during low season (June–August) for up to 15% discount on wedding packages.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="border-radius:12px;padding:20px;background:linear-gradient(135deg,rgba(232,62,140,0.1),rgba(13,110,253,0.1));border-left:4px solid var(--accent)">
+            <h5><i class="fa-solid fa-handshake"></i> Referral Program</h5>
+            <p class="text-muted small">Refer a friend and get ₹500 credit on your next booking. No limit!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-5">
+      <h2 style="margin-bottom:28px">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h5>Do you offer custom packages?</h5>
+        <p class="text-muted small">Absolutely! All our packages are customizable. Contact us to discuss your specific needs and budget.</p>
+      </div>
+      <div class="faq-item">
+        <h5>What's your payment policy?</h5>
+        <p class="text-muted small">50% advance to confirm booking, remaining balance on the day of shoot. Multiple payment methods accepted.</p>
+      </div>
+      <div class="faq-item">
+        <h5>Are prints included in the package?</h5>
+        <p class="text-muted small">Digital files are included in all packages. Prints are available as add-ons at separate cost.</p>
+      </div>
+      <div class="faq-item">
+        <h5>What if I'm not satisfied with the photos?</h5>
+        <p class="text-muted small">We offer unlimited re-shoots for portrait sessions if you're not satisfied. Wedding re-shoots at 50% cost.</p>
+      </div>
+      <div class="faq-item">
+        <h5>Can I book last-minute?</h5>
+        <p class="text-muted small">Yes! Subject to availability. Same-day bookings may have an additional rush fee of ₹500–₹1,000.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="border-radius:14px;padding:32px;background:linear-gradient(135deg,rgba(13,110,253,0.08),rgba(232,62,140,0.08));text-align:center;margin-bottom:32px">
+      <h3>Ready to Book Your Session?</h3>
+      <p style="color:var(--muted);margin-bottom:16px">Choose a package above or contact us for a custom quote tailored to your needs.</p>
+      <a class="btn btn-primary btn-lg" href="contact.html">Get Started Today</a>
+    </section>
+
+    <footer class="mt-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div>© <span id="year"></span> GK Photo Studio Balwala</div>
+        <div class="text-muted small">Pricing • Packages • Professional Photography</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal animation
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+  </script>
+</body>
+</html>

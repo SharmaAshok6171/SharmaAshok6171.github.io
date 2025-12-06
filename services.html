@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services — GK Photo Studio Balwala</title>
+  <meta name="description" content="Explore our comprehensive photography services — portraits, weddings, events, ID photos, printing, and photo editing." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#ffffff; --muted:#6c757d; --accent:#e83e8c; --accent-2:#0d6efd; --card:#f8f9fa; --glass: rgba(255,255,255,0.6);
+      --container:1100px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fff,#fbfbfd);color:#111;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent-2)}
+    .container-sm{max-width:var(--container)}
+
+    /* Header */
+    header.navbar{backdrop-filter:blur(6px);background:rgba(255,255,255,0.7);border-bottom:1px solid #eee}
+    .brand-logo{height:56px;width:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+
+    /* Hero */
+    .services-hero{padding:48px 0 32px 0;text-align:center;margin-bottom:32px}
+    .services-hero h1{font-size:48px;margin-bottom:12px;font-weight:800}
+    .services-hero p{font-size:18px;color:var(--muted)}
+
+    /* Service Card */
+    .service-card{border-radius:12px;padding:24px;background:#fff;border:1px solid #f0f0f0;transition:all .3s ease;height:100%}
+    .service-card:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);transform:translateY(-4px)}
+    .service-card h4{margin-bottom:12px;color:#111}
+    .service-card p{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:16px}
+    .service-card .icon{font-size:36px;margin-bottom:16px;color:var(--accent-2)}
+    .service-features{list-style:none;padding:0;margin:16px 0}
+    .service-features li{padding:8px 0;color:var(--muted);font-size:14px;border-bottom:1px solid #f0f0f0}
+    .service-features li:last-child{border:0}
+    .service-features li:before{content:"✓ ";color:var(--accent-2);font-weight:bold;margin-right:8px}
+
+    /* Footer */
+    footer{margin-top:36px;padding:22px 0;color:var(--muted);border-top:1px solid #f1f1f1}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .services-hero h1{font-size:32px}
+      .services-hero p{font-size:15px}
+      .service-card{padding:18px}
+      .service-card h4{font-size:16px}
+      h2{font-size:20px}
+      .container-sm{padding:0 16px}
+      header.navbar{padding:8px 0}
+    }
+    @media(max-width:640px){
+      .services-hero h1{font-size:24px}
+      .services-hero p{font-size:13px}
+      .service-card{padding:14px}
+      .service-card h4{font-size:14px}
+      .service-card p{font-size:12px}
+      .service-features li{font-size:12px;padding:6px 0}
+      h2{font-size:18px}
+      h3{font-size:16px}
+      .icon{font-size:28px;margin-bottom:12px}
+      header.navbar .nav-links{display:none}
+    }
+    @media(max-width:480px){
+      .container-sm{padding:0 12px}
+      .services-hero h1{font-size:20px;padding:24px 0 16px 0}
+      .service-card{padding:12px}
+      .service-card h4{font-size:13px}
+      .service-card p{font-size:11px}
+      .service-features li{font-size:11px;padding:5px 0}
+      .icon{font-size:24px}
+      h2{font-size:16px}
+      .btn{padding:0.35rem 0.7rem;font-size:12px}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar sticky-top shadow-sm">
+    <div class="container container-sm d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-3">
+        <div class="brand-logo">GK</div>
+        <div>
+          <div style="font-size:12px;color:var(--muted)">GK Photo Studio</div>
+          <div style="font-weight:800">Balwala — Portraits • Weddings • Prints</div>
+        </div>
+      </div>
+
+      <nav class="nav-links d-flex align-items-center gap-3">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-primary btn-sm" href="contact.html">Book a Shoot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container container-sm">
+    <section class="services-hero">
+      <h1>Our Photography Services</h1>
+      <p>Professional photography services tailored to your needs — from studio sessions to on-location events.</p>
+    </section>
+
+    <!-- Main Services Grid -->
+    <section class="row g-4 mb-5">
+      <!-- Portraits -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-user"></i></div>
+          <h4>Portrait & Headshots</h4>
+          <p>Professional headshots for LinkedIn, resumes, portfolios, or stunning family portraits in our studio.</p>
+          <ul class="service-features">
+            <li>Studio & outdoor options</li>
+            <li>Professional lighting setup</li>
+            <li>Up to 5 edited images</li>
+            <li>Digital files included</li>
+            <li>Prints available</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">Starting at ₹999</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Book Now</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weddings -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-heart"></i></div>
+          <h4>Wedding Photography</h4>
+          <p>Full-day wedding coverage with candid moments, traditional shots, and professional editing.</p>
+          <ul class="service-features">
+            <li>8–12 hours coverage</li>
+            <li>Candid & traditional shots</li>
+            <li>Pre-wedding session optional</li>
+            <li>600+ high-res photos</li>
+            <li>Album & digital delivery</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">Starting at ₹8,999</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Enquire</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-camera"></i></div>
+          <h4>Event Coverage</h4>
+          <p>Professional photography for corporate events, parties, birthdays, and special occasions.</p>
+          <ul class="service-features">
+            <li>Flexible duration options</li>
+            <li>Candid photography focus</li>
+            <li>Quick digital delivery</li>
+            <li>Unlimited shots</li>
+            <li>Professional editing</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">Hourly rates available</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Get Quote</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ID Photos -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-id-card"></i></div>
+          <h4>ID & Passport Photos</h4>
+          <p>Professional ID, passport, and visa photos with same-day printing available.</p>
+          <ul class="service-features">
+            <li>Government-compliant</li>
+            <li>Same-day prints</li>
+            <li>Multiple sizes</li>
+            <li>Digital copy included</li>
+            <li>Quick processing</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">From ₹299</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Book Now</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Printing -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-print"></i></div>
+          <h4>Photo Prints & Frames</h4>
+          <p>High-quality prints in various sizes and materials, with custom framing options available.</p>
+          <ul class="service-features">
+            <li>Glossy & matte finish</li>
+            <li>Multiple sizes available</li>
+            <li>Canvas prints option</li>
+            <li>Custom framing</li>
+            <li>Fast turnaround</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">From ₹10 per print</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Order Now</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editing -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h4>Photo Editing & Retouching</h4>
+          <p>Professional photo editing, retouching, background removal, and color correction services.</p>
+          <ul class="service-features">
+            <li>Color correction</li>
+            <li>Skin retouching</li>
+            <li>Background removal</li>
+            <li>Special effects</li>
+            <li>Batch processing</li>
+          </ul>
+          <div class="mt-3">
+            <strong style="color:var(--accent-2)">Per image pricing</strong>
+            <div><a href="contact.html" class="btn btn-sm btn-outline-primary mt-2 w-100">Get Quote</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add-on Services -->
+    <section class="mb-5">
+      <h2 style="margin-bottom:28px">Add-On Services</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-map-location-dot"></i> On-Location Shoots</h5>
+            <p class="text-muted small">Photography at your preferred outdoor or indoor location. Travel charges may apply.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-book"></i> Wedding Albums</h5>
+            <p class="text-muted small">Custom-designed printed albums featuring your favorite wedding moments.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-video"></i> Video Highlights Reel</h5>
+            <p class="text-muted small">Short wedding video montage with music and professional editing.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-face-grin"></i> Photo Booth Rental</h5>
+            <p class="text-muted small">Fun photo booth setup for events with instant prints and digital copies.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-images"></i> Slideshow & Projection</h5>
+            <p class="text-muted small">Digital slideshow creation for events and special occasions.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="service-card">
+            <h5><i class="fa-solid fa-download"></i> Rush Processing</h5>
+            <p class="text-muted small">Expedited editing and printing for urgent orders (additional charges apply).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="service-card mb-5" style="background:linear-gradient(135deg,rgba(13,110,253,0.08),rgba(232,62,140,0.08))">
+      <h3 style="margin-bottom:24px">Why Choose GK Photo Studio?</h3>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div><strong>⭐ Professional Quality</strong> — Years of experience with high-end equipment and techniques.</div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>😊 Friendly Service</strong> — We make you feel comfortable and relaxed during shoots.</div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>⚡ Quick Turnaround</strong> — Same-day prints, fast digital delivery.</div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>💰 Fair Pricing</strong> — No hidden charges, transparent pricing for all services.</div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>📸 Customizable Packages</strong> — Tailor services to your specific needs and budget.</div>
+        </div>
+        <div class="col-md-6">
+          <div><strong>🎯 Attention to Detail</strong> — We focus on capturing what matters most to you.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="service-card mb-5" style="text-align:center;border:2px solid var(--accent-2)">
+      <h3>Ready to Book Your Service?</h3>
+      <p style="color:var(--muted);margin-bottom:16px">Contact us today and let's discuss how we can serve your photography needs.</p>
+      <a class="btn btn-primary btn-lg" href="contact.html">Get in Touch</a>
+    </section>
+
+    <footer class="mt-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div>© <span id="year"></span> GK Photo Studio Balwala</div>
+        <div class="text-muted small">Services • Professional Photography • Quality Prints</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal animation
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+  </script>
+</body>
+</html>

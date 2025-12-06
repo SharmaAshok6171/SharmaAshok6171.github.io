@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — GK Photo Studio Balwala</title>
+  <meta name="description" content="Browse our photography portfolio — portraits, weddings, events, and family photos from GK Photo Studio Balwala." />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#ffffff; --muted:#6c757d; --accent:#e83e8c; --accent-2:#0d6efd; --card:#f8f9fa; --glass: rgba(255,255,255,0.6);
+      --container:1100px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fff,#fbfbfd);color:#111;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent-2)}
+    .container-sm{max-width:var(--container)}
+
+    /* Header */
+    header.navbar{backdrop-filter:blur(6px);background:rgba(255,255,255,0.7);border-bottom:1px solid #eee}
+    .brand-logo{height:56px;width:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+
+    /* Page Hero */
+    .gallery-hero{padding:48px 0 32px 0;text-align:center;margin-bottom:32px}
+    .gallery-hero h1{font-size:48px;margin-bottom:12px;font-weight:800}
+    .gallery-hero p{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto}
+
+    /* Filter Buttons */
+    .gallery-filters{display:flex;gap:12px;justify-content:center;margin:32px 0;flex-wrap:wrap}
+    .filter-btn{padding:8px 16px;border:2px solid #e0e0e0;background:#fff;border-radius:24px;cursor:pointer;transition:all .3s ease;font-weight:600;font-size:14px}
+    .filter-btn:hover, .filter-btn.active{background:var(--accent-2);color:#fff;border-color:var(--accent-2)}
+
+    /* Gallery Grid */
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0}
+    .gallery-item{position:relative;overflow:hidden;border-radius:12px;aspect-ratio:1;cursor:pointer;background:#f0f0f0}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+    .gallery-item:hover img{transform:scale(1.08)}
+    .gallery-item-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s ease}
+    .gallery-item:hover .gallery-item-overlay{opacity:1}
+    .gallery-item-overlay i{color:#fff;font-size:32px}
+
+    /* Category Section */
+    .category-section{margin:48px 0}
+    .category-section h3{font-size:28px;margin-bottom:24px;font-weight:800}
+    .category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+    /* Card */
+    .service-card{border-radius:12px;padding:18px;background:#fff;border:1px solid #f0f0f0}
+
+    /* Footer */
+    footer{margin-top:36px;padding:22px 0;color:var(--muted);border-top:1px solid #f1f1f1}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* Lightbox Modal */
+    .modal-fullscreen .modal-content{background:transparent;border:0}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      .gallery-grid{grid-template-columns:repeat(3,1fr)}
+      .category-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-hero h1{font-size:40px}
+    }
+    @media(max-width:768px){
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .category-grid{grid-template-columns:1fr}
+      .gallery-hero h1{font-size:32px}
+      .gallery-hero p{font-size:15px}
+      .gallery-filters{gap:8px;margin:20px 0}
+      .filter-btn{padding:6px 12px;font-size:12px}
+      .container-sm{padding:0 16px}
+      header.navbar{padding:8px 0}
+    }
+    @media(max-width:640px){
+      .gallery-grid{grid-template-columns:1fr}
+      .gallery-hero h1{font-size:24px;margin-bottom:8px}
+      .gallery-hero p{font-size:13px}
+      .gallery-filters{flex-wrap:wrap;gap:6px}
+      .filter-btn{padding:5px 10px;font-size:11px}
+      .service-card{padding:12px}
+      h2{font-size:18px}
+      header.navbar .nav-links{display:none}
+      .gallery-item{border-radius:8px}
+    }
+    @media(max-width:480px){
+      .container-sm{padding:0 12px}
+      .gallery-hero h1{font-size:20px}
+      .gallery-hero{padding:32px 0 20px 0}
+      .gallery-grid{gap:12px}
+      .filter-btn{padding:4px 8px;font-size:10px}
+      .service-card{padding:10px}
+      .modal-body{padding:12px !important}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar sticky-top shadow-sm">
+    <div class="container container-sm d-flex align-items-center justify-content-between py-2">
+      <div class="d-flex align-items-center gap-3">
+        <div class="brand-logo">GK</div>
+        <div>
+          <div style="font-size:12px;color:var(--muted)">GK Photo Studio</div>
+          <div style="font-weight:800">Balwala — Portraits • Weddings • Prints</div>
+        </div>
+      </div>
+
+      <nav class="nav-links d-flex align-items-center gap-3">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="gallery.html">Gallery</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-primary btn-sm" href="contact.html">Book a Shoot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container container-sm">
+    <section class="gallery-hero">
+      <h1>Our Photography Portfolio</h1>
+      <p>Explore our collection of stunning portraits, wedding moments, events, and more. Click any image to view full size.</p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="portraits">Portraits</button>
+      <button class="filter-btn" data-filter="weddings">Weddings</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+      <button class="filter-btn" data-filter="family">Family</button>
+    </div>
+
+    <!-- Main Gallery Grid -->
+    <section id="gallery-grid" class="gallery-grid">
+      <!-- Portraits -->
+      <div class="gallery-item reveal" data-category="portraits">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Professional Portrait" data-full="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="portraits">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Studio Portrait" data-full="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="portraits">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Headshot" data-full="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="portraits">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=600&auto=format&fit=crop" alt="Professional Headshot" data-full="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- Weddings -->
+      <div class="gallery-item reveal" data-category="weddings">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=600&auto=format&fit=crop" alt="Bride & Groom" data-full="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="weddings">
+        <img src="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?q=80&w=600&auto=format&fit=crop" alt="Couple Portrait" data-full="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="weddings">
+        <img src="https://images.unsplash.com/photo-1501630834273-4b5ea266042f?q=80&w=600&auto=format&fit=crop" alt="Wedding Details" data-full="https://images.unsplash.com/photo-1501630834273-4b5ea266042f?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="weddings">
+        <img src="https://images.unsplash.com/photo-1519681393784-d550a0175c97?q=80&w=600&auto=format&fit=crop" alt="Bride Portrait" data-full="https://images.unsplash.com/photo-1519681393784-d550a0175c97?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- Family -->
+      <div class="gallery-item reveal" data-category="family">
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=600&auto=format&fit=crop" alt="Family Portrait" data-full="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="family">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=600&auto=format&fit=crop" alt="Baby Portrait" data-full="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="family">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" alt="Family Group" data-full="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="family">
+        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&auto=format&fit=crop" alt="Kids Portrait" data-full="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+
+      <!-- Events -->
+      <div class="gallery-item reveal" data-category="events">
+        <img src="https://images.unsplash.com/photo-1509003123408-0f9a5ff3c1d8?q=80&w=600&auto=format&fit=crop" alt="Event Photography" data-full="https://images.unsplash.com/photo-1509003123408-0f9a5ff3c1d8?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="events">
+        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&auto=format&fit=crop" alt="Event Moment" data-full="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="events">
+        <img src="https://images.unsplash.com/photo-1482686115713-0f2b5f1f97c7?q=80&w=600&auto=format&fit=crop" alt="Party Event" data-full="https://images.unsplash.com/photo-1482686115713-0f2b5f1f97c7?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="gallery-item reveal" data-category="events">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=600&auto=format&fit=crop" alt="Celebration" data-full="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1200&auto=format&fit=crop">
+        <div class="gallery-item-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-card mt-5 mb-5" style="background:linear-gradient(135deg,rgba(13,110,253,0.08),rgba(232,62,140,0.08));text-align:center">
+      <h3 style="margin-bottom:16px">Love Our Work?</h3>
+      <p style="margin-bottom:16px;color:var(--muted)">Book your personal or professional photoshoot today and create beautiful memories.</p>
+      <a class="btn btn-primary btn-lg" href="contact.html">Book a Shoot</a>
+    </section>
+
+    <footer class="mt-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div>© <span id="year"></span> GK Photo Studio Balwala</div>
+        <div class="text-muted small">Gallery • Portraits • Weddings • Events</div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Gallery Lightbox Modal -->
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-body d-flex align-items-center justify-content-center p-0">
+          <button type="button" class="btn btn-close position-absolute m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index:1000"></button>
+          <img id="gallery-modal-img" src="" alt="" style="max-width:95%;max-height:95%;border-radius:12px;box-shadow:0 18px 60px rgba(10,10,10,0.4)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal animation
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add('visible');
+        });
+      },{threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+
+    // Gallery filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function(){
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const filter = this.dataset.filter;
+        galleryItems.forEach(item => {
+          if(filter === 'all' || item.dataset.category === filter){
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Gallery lightbox
+    document.getElementById('gallery-grid').addEventListener('click', function(e){
+      const item = e.target.closest('.gallery-item');
+      if(!item) return;
+      const img = item.querySelector('img');
+      const full = img.dataset.full || img.src;
+      document.getElementById('gallery-modal-img').src = full;
+      document.getElementById('gallery-modal-img').alt = img.alt;
+      const modal = new bootstrap.Modal(document.getElementById('galleryModal'));
+      modal.show();
+    });
+
+    // Close lightbox with Escape
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        const mod = bootstrap.Modal.getInstance(document.getElementById('galleryModal'));
+        if(mod) mod.hide();
+      }
+    });
+  </script>
+</body>
+</html>
